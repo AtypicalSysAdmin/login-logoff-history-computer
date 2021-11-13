@@ -18,11 +18,11 @@ $slogonevents = Get-Eventlog -LogName Security -ComputerName Mo -after $startDat
    } 
   
     # Logoff Failed Events 
-   # Local (Logon Type 2) 
+   # initializing logoff by user event id 4647
    if ($e.EventID -eq 4647 -and ($e.ReplacementStrings[1] -eq "Mo") ){ 
      write-host "Type: Local initiated Logoff`tDate: "$e.TimeGenerated "`tStatus: Failed`tUser: "$e.ReplacementStrings[5] "`tWorkstation: "$e.ReplacementStrings[11] 
    } 
-
+   #successful logoff event id 4634
     if (($e.EventID -eq 4634 -and ($e.ReplacementStrings[4] -eq 2) -and ($e.ReplacementStrings[1] -eq "moham") ) ){ 
    # $e.ReplacementStrings[1]
 
